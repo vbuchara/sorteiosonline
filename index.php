@@ -1,4 +1,8 @@
 <?php
+	include_once './vendor/autoload.php';
+	
+	$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+	$dotenv->safeLoad();
 /**
  * CodeIgniter
  *
@@ -53,7 +57,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('BASE_URL', 'https://localhost/Project-sorteio/');
+	define('BASE_URL', $_ENV['BASE_URL']);
 
 	if(preg_match("/localhost/i", BASE_URL)){
 		define('ENVIRONMENT', 'development');
@@ -318,4 +322,5 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+
 require_once BASEPATH.'core/CodeIgniter.php';
